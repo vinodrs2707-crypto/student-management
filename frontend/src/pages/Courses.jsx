@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import CourseForm from "../components/CourseForm";
+import CourseStudents from "../components/CourseStudents";
 import api, { getErrorMessage } from "../services/api";
 
 function Courses() {
@@ -9,6 +10,7 @@ function Courses() {
   const [message, setMessage] = useState("");
   const [showForm, setShowForm] = useState(false);
   const [editing, setEditing] = useState(null);
+  const [selectedCourse, setSelectedCourse] = useState(null);
 
   const loadCourses = async () => {
     try {
@@ -61,6 +63,9 @@ function Courses() {
     setMessage("");
     try {
       await api.delete(`/courses/${course.id}`);
+      if (selectedCourse && selectedCourse.id === course.id) {
+        setSelectedCourse(null);
+      }
       setMessage(`${course.name} was deleted.`);
       loadCourses();
     } catch (err) {
@@ -91,6 +96,14 @@ function Courses() {
         />
       )}
 
+      {selectedCourse && (
+        <CourseStudents
+          key={selectedCourse.id}
+          course={selectedCourse}
+          onClose={() => setSelectedCourse(null)}
+        />
+      )}
+
       {loading ? (
         <p>Loading...</p>
       ) : courses.length === 0 ? (
@@ -113,6 +126,12 @@ function Courses() {
                   <td>{course.name}</td>
                   <td>{course.description || "-"}</td>
                   <td>
+                    <button
+                      className="btn-small"
+                      onClick={() => setSelectedCourse(course)}
+                    >
+                      Students
+                    </button>
                     <button
                       className="btn-small"
                       onClick={() => openEditForm(course)}
