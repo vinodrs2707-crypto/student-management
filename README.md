@@ -436,7 +436,9 @@ Tokens expire after 60 minutes, so run \*\*Login\*\* again if you get a 401 erro
 
 | Course enrollment panel | `screenshots/06-enrollment.png` |
 
-| Swagger UI (Auth, Student, Course) | `screenshots/07-swagger.png` |
+| Swagger UI: Auth Service login | `screenshots/07-swagger-auth.png` |
+| Swagger UI: Student Service | `screenshots/07-swagger-students.png` |
+| Swagger UI: Course Service | `screenshots/07-swagger-courses.png` |
 
 | Postman requests and responses | `screenshots/08-postman.png` |
 
