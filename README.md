@@ -440,8 +440,6 @@ Tokens expire after 60 minutes, so run \*\*Login\*\* again if you get a 401 erro
 | Swagger UI: Student Service | `screenshots/07-swagger-students.png` |
 | Swagger UI: Course Service | `screenshots/07-swagger-courses.png` |
 
-| Postman requests and responses | `screenshots/08-postman.png` |
-
 
 
 \## Notes
